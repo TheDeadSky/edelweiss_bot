@@ -68,5 +68,5 @@ async def stop(ctx):
     voice_client = bot.voice_clients[0]
     voice_client.stop()
 
-#bot.run(TOKEN)
-token = os.environ.get("BOT_TOKEN")
+TOKEN = os.environ.get("BOT_TOKEN")
+bot.run(TOKEN)
