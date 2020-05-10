@@ -43,8 +43,8 @@ async def join(ctx):
 async def play(ctx, url):
     voice_client = bot.voice_clients[0]
     
-    # ytdl = youtube_dl.YoutubeDL(YTDL_OPTS)
-    # info = ytdl.extract_info(url, download=False)
+    ytdl = youtube_dl.YoutubeDL(YTDL_OPTS)
+    info = await ytdl.extract_info(url, download=False)
     
     asrc = discord.FFmpegOpusAudio(url)
 
