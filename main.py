@@ -5,11 +5,7 @@ import time, os
 
 MAIN_ROLES = ["Dude3", "Dude2", "Magic Dude", "Dude Founder"]
 YTDL_OPTS = {
-    'format': 'bestaudio/best',
-    'reconnect': True,
-    'reconnect_streamed': True,
-    'reconnect_delay_max': 5
-
+    'format': 'bestaudio/best'
 }
 bot = commands.Bot(command_prefix='/')
 
@@ -34,8 +30,13 @@ async def ruhelp(ctx, cmd = ''):
     await ctx.send(help_msg)
 
 @bot.command()
-async def join(ctx):
-    channel = ctx.author.voice.channel
+async def join(ctx, debug='0'):
+    author = ctx.author
+
+    if debug == '1':
+        await ctx.send(str(author.roles))
+
+    channel = author.voice.channel
     await channel.connect()
 
 
@@ -44,23 +45,11 @@ async def play(ctx, url):
     voice_client = bot.voice_clients[0]
     
     ytdl = youtube_dl.YoutubeDL(YTDL_OPTS)
-    info = await ytdl.extract_info(url, download=False)
-    
-    asrc = discord.FFmpegOpusAudio(url)
+    info = ytdl.extract_info(url, download=False)
+
+    asrc = discord.FFmpegOpusAudio(info['formats'][0]['url'], before_options="-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5")
 
     voice_client.play(asrc)
-
-
-# @bot.command()
-# async def playfile(ctx, url):
-#     voice_client = bot.voice_clients[0]
-    
-#     #ytdl = youtube_dl.YoutubeDL(YTDL_OPTS)
-#     #info = ytdl.extract_info(url, download=False)
-    
-#     asrc = discord.FFmpegPCMAudio(url)
-
-#     voice_client.play(asrc)
 
 @bot.command()
 async def stop(ctx):
