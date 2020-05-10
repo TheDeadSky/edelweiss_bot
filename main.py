@@ -42,7 +42,7 @@ async def play(ctx, url):
     ytdl = youtube_dl.YoutubeDL(YTDL_OPTS)
     info = ytdl.extract_info(url, download=False)
     
-    asrc = discord.FFmpegAudio(info['formats'][0]['url'])
+    asrc = discord.FFmpegOpusAudio(info['formats'][0]['url'])
 
     voice_client.play(asrc)
 
