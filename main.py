@@ -1,8 +1,7 @@
 import youtube_dl
 import discord
 from discord.ext import commands
-import time
-
+import time, os
 
 MAIN_ROLES = ["Dude3", "Dude2", "Magic Dude", "Dude Founder"]
 YTDL_OPTS = {
@@ -69,4 +68,5 @@ async def stop(ctx):
     voice_client = bot.voice_clients[0]
     voice_client.stop()
 
-bot.run(TOKEN)
+#bot.run(TOKEN)
+token = os.environ.get("BOT_TOKEN")
