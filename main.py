@@ -5,7 +5,7 @@ import time, os
 
 MAIN_ROLES = ["Dude3", "Dude2", "Magic Dude", "Dude Founder"]
 YTDL_OPTS = {
-    'format': 'bestaudio'
+    'format': 'mp3'
 }
 
 bot = commands.Bot(command_prefix='/')
