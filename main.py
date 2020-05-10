@@ -6,7 +6,10 @@ import time, os
 MAIN_ROLES = ["Dude3", "Dude2", "Magic Dude", "Dude Founder"]
 YTDL_OPTS = {
     'format': 'bestaudio/best',
-    "ignoreerrors": True
+    'reconnect': True,
+    'reconnect_streamed': True,
+    'reconnect_delay_max': 5
+
 }
 bot = commands.Bot(command_prefix='/')
 
