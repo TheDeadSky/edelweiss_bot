@@ -49,7 +49,7 @@ async def play(ctx, url):
 
     asrc = discord.FFmpegOpusAudio(info['formats'][0]['url'], before_options="-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5")
 
-    voice_client.play(asrc)
+    await voice_client.play(asrc)
 
 @bot.command()
 async def stop(ctx):
