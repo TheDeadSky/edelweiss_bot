@@ -1,7 +1,7 @@
 # edelweiss_bot
 
 Simple bot for discord server. Development in process.
-Current Version is testing.
+> this is test version
 
 After adding bot to your server type: /help to getting infrormation about commands
 
