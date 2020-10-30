@@ -47,7 +47,7 @@ async def play(ctx, url):
     ytdl = youtube_dl.YoutubeDL(YTDL_OPTS)
     info = ytdl.extract_info(url, download=False)
 
-    asrc = discord.FFmpegOpusAudio(info['formats'][0]['url'], before_options="-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5")
+    asrc = discord.FFmpegOpusAudio(info['formats'][0]['url'], before_options="-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5 --verbose")
 
     voice_client.play(asrc)
 
